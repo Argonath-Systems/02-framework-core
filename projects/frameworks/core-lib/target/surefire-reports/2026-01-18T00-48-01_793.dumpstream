@@ -1,0 +1,5 @@
+# Created at 2026-01-18T00:48:01.989
+Boot Manifest-JAR contains absolute paths in classpath 'D:\Travail\Code\Gaming-Projects\Hytale\LordOfTheTales\projects\frameworks\core-lib\target\test-classes'
+Hint: <argLine>-Djdk.net.URLClassPath.disableClassPathURLCheck=true</argLine>
+'other' has different root
+
