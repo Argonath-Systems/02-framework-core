@@ -3,6 +3,8 @@ package com.argonathsystems.framework.core.config;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Registry for serializers by type ID.
@@ -10,6 +12,7 @@ import java.util.Map;
  */
 public class SerializerRegistry {
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(SerializerRegistry.class);
     private final Map<String, ConfigSerializer<?>> serializers = new HashMap<>();
 
     /**
@@ -20,6 +23,7 @@ public class SerializerRegistry {
      * @param <T>        The type being serialized
      */
     public <T> void register(String typeId, ConfigSerializer<T> serializer) {
+        LOGGER.info("Registering serializer for type: {}", typeId);
         serializers.put(typeId, serializer);
     }
 
@@ -56,20 +60,28 @@ public class SerializerRegistry {
     public <T> T deserialize(ConfigSection config) {
         String type = config.getString("type");
         if (type == null) {
+            LOGGER.error("Missing 'type' field in config");
             throw new ConfigException("Missing 'type' field in config");
         }
 
         ConfigSerializer<T> serializer = get(type);
         if (serializer == null) {
+            LOGGER.error("Unknown type: {}", type);
             throw new ConfigException("Unknown type: " + type);
         }
 
         List<String> errors = serializer.validate(config);
         if (!errors.isEmpty()) {
+            LOGGER.error("Validation failed for type {}: {}", type, errors);
             throw new ConfigValidationException(type, errors);
         }
 
-        return serializer.deserialize(config);
+        try {
+            return serializer.deserialize(config);
+        } catch (Exception e) {
+            LOGGER.error("Failed to deserialize type {}", type, e);
+            throw e;
+        }
     }
 
     /**

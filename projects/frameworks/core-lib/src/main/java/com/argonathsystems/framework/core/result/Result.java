@@ -4,6 +4,9 @@ import java.util.Optional;
 import java.util.function.Consumer;
 import java.util.function.Function;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 /**
  * Represents either a successful result or a failure with message.
  * Inspired by Rust's Result type.
@@ -11,6 +14,8 @@ import java.util.function.Function;
  * @param <T> The type of the success value
  */
 public sealed interface Result<T> permits Result.Success, Result.Failure {
+
+    static final Logger LOGGER = LoggerFactory.getLogger(Result.class);
 
     /**
      * Check if this is a success.
@@ -109,6 +114,7 @@ public sealed interface Result<T> permits Result.Success, Result.Failure {
      * @return A failure result
      */
     static <T> Result<T> failure(String message) {
+        LOGGER.warn("Created Failure Result: {}", message);
         return new Failure<>(message);
     }
 
@@ -121,7 +127,9 @@ public sealed interface Result<T> permits Result.Success, Result.Failure {
      * @return A failure result
      */
     static <T> Result<T> failure(String format, Object... args) {
-        return new Failure<>(String.format(format, args));
+        String message = String.format(format, args);
+        LOGGER.warn("Created Failure Result: {}", message);
+        return new Failure<>(message);
     }
 
     /**
