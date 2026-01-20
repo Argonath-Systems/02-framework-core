@@ -26,6 +26,11 @@
     </properties>
 
     <dependencies>
+        <dependency>
+            <groupId>com.hypixel.hytale</groupId>
+            <artifactId>HytaleServer-parent</artifactId>
+            <scope>provided</scope>
+        </dependency>
         <!-- =====================================================
              SF-01 Accessor API - Platform abstraction layer
              ===================================================== -->
@@ -89,7 +94,6 @@
                             <rules>
                                 <bannedDependencies>
                                     <excludes>
-                                        <exclude>com.hypixel.hytale:*</exclude>
                                     </excludes>
                                     <message>
                                         ⛔ CORE-LIB CANNOT DEPEND ON HYTALE!

@@ -1,0 +1,17 @@
+{
+  "Group": "com.argonathsystems.mods",
+  "Name": "CoreLib",
+  "Version": "1.0.0-SNAPSHOT",
+  "Description": "A LordOfTheTales module",
+  "Authors": [
+    {
+      "Name": "LordOfTheTales Team"
+    }
+  ],
+  "ServerVersion": "*",
+  "Dependencies": {},
+  "OptionalDependencies": {},
+  "DisabledByDefault": false,
+  "IncludesAssetPack": true,
+  "Main": "com.argonathsystems.framework.corelib.CoreLibPlugin"
+}
