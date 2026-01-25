@@ -12,30 +12,7 @@
 
 ## C4 Component Diagram
 
-```plantuml
-@startuml
-!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Component.puml
-
-title Component Diagram for Core Library
-
-Container(core_lib, "Core Library", "Java Library", "Common reusable utilities")
-
-Container_Boundary(core_boundary, "Core Modules") {
-    Component(random, "WeightedSelector", "Utils", "Weighted random selection")
-    Component(ratelimit, "RateLimiter", "Utils", "Request rate limiting")
-    Component(progress, "ProgressTracker", "Utils", "Generic progress tracking")
-    Component(config, "ConfigSerializer", "Utils", "Configuration handling")
-    Component(debug, "ExecutionTrace", "Utils", "Debug tracing")
-    Component(result, "Result Types", "Utils", "Functional result types")
-}
-
-System_Ext(accessor, "Accessor API", "Dependency")
-System_Ext(mod, "Standalone Mod", "Uses Core Lib")
-
-Rel(core_lib, accessor, "Uses")
-Rel(mod, core_lib, "Uses")
-@enduml
-```
+![Component Diagram for Core Library](https://argonath-systems.github.io/00-Argonath-Wiki/diagrams/02-framework-core_plantuml_1.png)
 
 ## Specification
 
@@ -1072,17 +1049,7 @@ player.sendMessage("Progress: " + result.progress().format());
 
 ### Component Context
 
-```plantuml
-@startuml
-!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Component.puml
-
-title Component Diagram for SF-02: Core Library
-
-Container_Boundary(framework, "SF-02: Core Library") {
-}
-
-@enduml
-```
+![Component Diagram](https://argonath-systems.github.io/00-Argonath-Wiki/diagrams/02-framework-core_plantuml_2.png)
 
 ---
 
