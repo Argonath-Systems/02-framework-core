@@ -1,5 +1,15 @@
 # Core Library
 
+> **Common reusable utilities for all Argonath Systems projects**
+
+[![GitHub](https://img.shields.io/badge/GitHub-Argonath--Systems-181717?logo=github)](https://github.com/Argonath-Systems/02-framework-core)
+[![Maven](https://img.shields.io/badge/Maven-Central-C71A36?logo=apache-maven)](https://maven.apache.org/)
+[![Java](https://img.shields.io/badge/Java-25-orange?logo=openjdk)](https://openjdk.org/)
+[![License](https://img.shields.io/badge/License-MIT-green.svg)](../LICENSE)
+[![Website](https://img.shields.io/badge/Docs-argonath--systems.github.io-blue)](https://argonath-systems.github.io/00-Argonath-Wiki)
+
+---
+
 ## C4 Component Diagram
 
 ```plantuml
@@ -1073,3 +1083,35 @@ Container_Boundary(framework, "SF-02: Core Library") {
 
 @enduml
 ```
+
+---
+
+## 📚 Documentation
+
+- 🌐 [**Documentation Website**](https://argonath-systems.github.io/00-Argonath-Wiki)
+- 📖 [**Core Library Guide**](https://argonath-systems.github.io/00-Argonath-Wiki/docs/api/core-lib.html)
+- 🏗️ [**Architecture Guide**](https://argonath-systems.github.io/00-Argonath-Wiki/docs/architecture/overview.html)
+
+## 🤝 Contributing
+
+See [CONTRIBUTING.md](../CONTRIBUTING.md) for development guidelines.
+
+## 💬 Community
+
+- 💬 [**Discord**](https://discord.gg/RK3MtpyH) - Chat and support
+- 🐛 [**Issues**](https://github.com/orgs/Argonath-Systems/issues) - Bug reports
+- 📖 [**Discussions**](https://github.com/orgs/Argonath-Systems/discussions) - Q&A
+
+## 📄 License
+
+MIT License - Copyright © 2025 Argonath Systems. See [LICENSE](../LICENSE) for details.
+
+---
+
+<div align="center">
+
+Part of the [**Argonath Systems**](https://github.com/orgs/Argonath-Systems/) ecosystem
+
+[Documentation](https://argonath-systems.github.io/00-Argonath-Wiki) • [Discord](https://discord.gg/RK3MtpyH) • [GitHub](https://github.com/orgs/Argonath-Systems/)
+
+</div>
