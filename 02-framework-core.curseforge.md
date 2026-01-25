@@ -67,7 +67,7 @@ dependencies {
 
 ## 🏷️ Tags
 
-`core utilities library helpers validation` `library` `framework` `hytale` `lord-of-the-tales` `argonath-systems`
+`core utilities library helpers validation` `library` `framework` `hytale` `argonath` `argonath-systems`
 
 ## 🔗 Dependencies
 
