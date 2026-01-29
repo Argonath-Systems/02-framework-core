@@ -1,5 +1,8 @@
 package com.argonathsystems.framework.core.debug;
 
+import com.argonathsystems.framework.accessorapi.data.DataValue;
+import com.argonathsystems.framework.core.config.DataValueConverter;
+
 import java.time.Duration;
 import java.time.Instant;
 import java.util.ArrayList;
@@ -176,9 +179,34 @@ public class ExecutionTrace {
      * Get metadata.
      *
      * @return Metadata map
+     * @deprecated Use {@link #getMetadataTyped()} for type-safe access
      */
+    @Deprecated(since = "2.0.0")
     public Map<String, Object> getMetadata() {
         return metadata;
+    }
+
+    /**
+     * Get metadata as type-safe DataValue map.
+     *
+     * @return Type-safe metadata map
+     * @since 2.0.0
+     */
+    public Map<String, DataValue> getMetadataTyped() {
+        return DataValueConverter.fromRawMap(metadata);
+    }
+
+    /**
+     * Add type-safe metadata to this trace.
+     *
+     * @param key   Metadata key
+     * @param value Type-safe metadata value
+     * @return This trace for chaining
+     * @since 2.0.0
+     */
+    public ExecutionTrace metadata(String key, DataValue value) {
+        metadata.put(key, DataValueConverter.toRawValue(value));
+        return this;
     }
 
     /**
@@ -244,7 +272,9 @@ public class ExecutionTrace {
      * Convert to structured map for logging/serialization.
      *
      * @return Map representation of this trace
+     * @deprecated Use {@link #toMapTyped()} for type-safe serialization
      */
+    @Deprecated(since = "2.0.0")
     public Map<String, Object> toMap() {
         Map<String, Object> map = new LinkedHashMap<>();
         map.put("operation", operationName);
@@ -266,6 +296,16 @@ public class ExecutionTrace {
         }
 
         return map;
+    }
+
+    /**
+     * Convert to type-safe DataValue map for logging/serialization.
+     *
+     * @return Type-safe map representation of this trace
+     * @since 2.0.0
+     */
+    public Map<String, DataValue> toMapTyped() {
+        return DataValueConverter.fromRawMap(toMap());
     }
 
     @Override

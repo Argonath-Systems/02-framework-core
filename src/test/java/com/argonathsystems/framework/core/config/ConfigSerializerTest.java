@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
@@ -31,7 +32,7 @@ class ConfigSerializerTest {
         assertTrue(errors.isEmpty(), "Default validate should return empty list");
 
         // Test default getTypeId
-        assertNull(serializer.getTypeId(), "Default getTypeId should return null");
+        assertEquals(Optional.empty(), serializer.getTypeId(), "Default getTypeId should return Optional.empty()");
     }
 
     @Test

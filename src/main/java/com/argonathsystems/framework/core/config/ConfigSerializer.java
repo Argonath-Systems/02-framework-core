@@ -1,6 +1,10 @@
 package com.argonathsystems.framework.core.config;
 
+import com.argonathsystems.framework.accessorapi.data.DataValue;
+
 import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 
 /**
  * Serializer for converting objects to/from config.
@@ -24,8 +28,27 @@ public interface ConfigSerializer<T> {
      *
      * @param object The object to serialize
      * @return Map representation suitable for config output
+     * @deprecated Use {@link #serializeTyped(Object)} for type-safe serialization.
+     *             This method is retained for YAML/JSON library compatibility.
      */
+    @Deprecated(since = "2.0.0")
     java.util.Map<String, Object> serialize(T object);
+
+    /**
+     * Serialize to a type-safe DataValue map.
+     * Provides compile-time type safety for serialization.
+     * 
+     * <p>Default implementation converts from {@link #serialize(Object)}.
+     * Override for direct type-safe implementation.
+     *
+     * @param object The object to serialize
+     * @return Type-safe map representation
+     * @since 2.0.0
+     */
+    default Map<String, DataValue> serializeTyped(T object) {
+        Map<String, Object> raw = serialize(object);
+        return DataValueConverter.fromRawMap(raw);
+    }
 
     /**
      * Validate config before deserialization.
@@ -41,9 +64,9 @@ public interface ConfigSerializer<T> {
      * Get the type identifier for this serializer.
      * Used for polymorphic deserialization.
      *
-     * @return The type identifier string
+     * @return The type identifier string, or empty if not a polymorphic type
      */
-    default String getTypeId() {
-        return null;
+    default Optional<String> getTypeId() {
+        return Optional.empty();
     }
 }
